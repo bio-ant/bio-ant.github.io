@@ -25,31 +25,15 @@
         .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(220px); /* Увеличили размытие для большего распространения света */
+            filter: blur(220px);
             z-index: -1;
-            opacity: 0.85; /* Сделали свет чуть ярче */
-            animation: float 35s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); /* Замедлили плавание сфер */
+            opacity: 0.85;
+            animation: float 35s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
-        .orb-1 {
-            width: 80vw; height: 80vw; /* Увеличили размер сфер */
-            background: rgba(30, 144, 255, 0.18);
-            top: -10%; left: -10%;
-        }
-        .orb-2 {
-            width: 90vw; height: 90vw;
-            background: rgba(138, 43, 226, 0.15);
-            bottom: -20%; right: -10%;
-            animation-delay: -10s;
-            animation-duration: 40s; /* Сделали движение еще медленнее */
-        }
-        .orb-3 {
-            width: 70vw; height: 70vw;
-            background: rgba(0, 255, 170, 0.1);
-            top: 40%; left: 50%;
-            animation-delay: -5s;
-            transform: translateX(-50%);
-        }
+        .orb-1 { width: 80vw; height: 80vw; background: rgba(30, 144, 255, 0.18); top: -10%; left: -10%; }
+        .orb-2 { width: 90vw; height: 90vw; background: rgba(138, 43, 226, 0.15); bottom: -20%; right: -10%; animation-delay: -10s; animation-duration: 40s; }
+        .orb-3 { width: 70vw; height: 70vw; background: rgba(0, 255, 170, 0.1); top: 40%; left: 50%; animation-delay: -5s; transform: translateX(-50%); }
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
@@ -68,18 +52,35 @@
             margin: 0 auto;
         }
 
-        /* --- КРАСИВОЕ ПОЯВЛЕНИЕ БЛОКОВ (SCROLL REVEAL) --- */
+        /* --- КРАСИВОЕ ПОЯВЛЕНИЕ БЛОКОВ (SCROLL REVEAL - КАК В ИСХОДНИКЕ) --- */
         .reveal {
             opacity: 0;
             transform: translateY(60px) scale(0.92);
             transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 1.8s cubic-bezier(0.16, 1, 0.3, 1); /* Замедлили анимацию появления */
+                        transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0) scale(1);
+        }
+
+        /* ХЕДЕР С АВАТАРКОЙ */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         /* ПЕРЕЛИВАЮЩИЙСЯ ЗАГОЛОВОК SOYTLIX */
@@ -90,8 +91,6 @@
             text-transform: uppercase;
             margin: 0;
             text-align: center;
-            
-            /* Эффект переливающегося света */
             background: linear-gradient(
                 to right, 
                 #444444 0%, 
@@ -104,373 +103,160 @@
             color: transparent;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 12s linear infinite; /* Замедлили перелив света в 1.5 раза */
-            
-            /* Мягкое свечение вокруг букв */
-            filter: drop-shadow(0 0 80px rgba(255,255,255,0.4)); /* Увеличили свечение */
+            animation: shine 12s linear infinite;
+            filter: drop-shadow(0 0 80px rgba(255,255,255,0.4));
         }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* ИКОНКИ ДЛЯ КАРТОЧЕК */
+        .icon-custom {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        .icon-ae {
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(153, 153, 255, 0.2);
+        }
+
+        .icon-pepe {
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(50, 255, 150, 0.3)); 
+            border-radius: 50%;
         }
 
         /* РАЗДЕЛИТЕЛИ */
         .section-divider {
-            width: 100%;
-            text-align: center;
-            margin: 90px 0 50px 0;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%; text-align: center; margin: 90px 0 50px 0; position: relative; display: flex; align-items: center; justify-content: center;
         }
-
-        .section-divider::before,
-        .section-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        .section-divider::before, .section-divider::after {
+            content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
         }
-
         .section-divider span {
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            color: #888;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            padding: 0 25px;
+            font-weight: 500; letter-spacing: 0.3em; color: #888; text-transform: uppercase; font-size: 0.8rem; padding: 0 25px;
         }
 
-        /* --- НОВЫЙ БЛОК БИО --- */
+        /* БИО */
         .bio-section {
-            width: 100%;
-            margin-top: 20px;
-            padding: 50px;
+            width: 100%; margin-top: 20px; padding: 50px;
             background: linear-gradient(145deg, rgba(20, 20, 25, 0.6), rgba(10, 10, 12, 0.4));
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Блик сверху */
-            border-radius: 30px;
-            box-sizing: border-box;
-            position: relative;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px; box-sizing: border-box; position: relative;
             box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
         }
-
-        /* Декоративная кавычка на фоне БИО */
         .bio-section::after {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 30px;
-            font-size: 10rem;
-            font-family: serif;
-            color: rgba(255, 255, 255, 0.03);
-            line-height: 1;
-            pointer-events: none;
+            content: '"'; position: absolute; top: -20px; left: 30px; font-size: 10rem; font-family: serif; color: rgba(255, 255, 255, 0.03); line-height: 1; pointer-events: none;
         }
+        .bio-section p { font-weight: 300; line-height: 1.8; color: #e0e0e0; font-size: 1.15rem; margin: 0; position: relative; z-index: 2; }
 
-        .bio-section p {
-            font-weight: 300;
-            line-height: 1.8;
-            color: #e0e0e0;
-            font-size: 1.15rem;
-            margin: 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- КАРТОЧКИ УСЛУГ --- */
+        /* КАРТОЧКИ УСЛУГ */
         .card {
-            background: rgba(15, 15, 18, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 45px;
-            margin-bottom: 30px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Замедлили реакцию на наведение */
-            position: relative;
-            overflow: hidden;
+            background: rgba(15, 15, 18, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 24px; padding: 45px; margin-bottom: 30px;
+            width: 100%; box-sizing: border-box; transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
         }
-
-        /* Эффект блика внутри карточки */
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            opacity: 0;
-            transition: opacity 1s ease;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); opacity: 0; transition: opacity 1s ease;
         }
-
-        /* Наведения с глубоким неоновым свечением */
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            z-index: 10;
-        }
+        .card:hover { transform: translateY(-8px) scale(1.02); z-index: 10; }
         .card:hover::before { opacity: 1; }
 
-        .card-video:hover {
-            border-color: rgba(50, 150, 255, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(50, 150, 255, 0.35); /* Расширили неоновые тени */
-        }
-        .card-server:hover {
-            border-color: rgba(150, 50, 255, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(150, 50, 255, 0.35);
-        }
-        .card-nft:hover {
-            border-color: rgba(50, 255, 150, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(50, 255, 150, 0.35);
-        }
-        .card-crypto:hover {
-            border-color: rgba(255, 170, 50, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(255, 170, 50, 0.35);
-        }
+        .card-video:hover { border-color: rgba(50, 150, 255, 0.4); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(50, 150, 255, 0.35); }
+        .card-server:hover { border-color: rgba(150, 50, 255, 0.4); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(150, 50, 255, 0.35); }
+        .card-nft:hover { border-color: rgba(50, 255, 150, 0.4); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(50, 255, 150, 0.35); }
+        .card-crypto:hover { border-color: rgba(255, 170, 50, 0.4); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 150px rgba(255, 170, 50, 0.35); }
 
         .card h2 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: #ffffff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            margin-top: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: 0.05em; color: #ffffff;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap;
         }
 
-        .card p {
-            font-weight: 300;
-            line-height: 1.8;
-            color: #b0b0b0;
-            margin: 0;
-            font-size: 1.05rem;
-        }
+        .card p { font-weight: 300; line-height: 1.8; color: #b0b0b0; margin: 0; font-size: 1.05rem; }
 
-        /* Плашка "ПО ЗАПРОСУ" */
         .badge {
-            display: inline-block;
-            background: rgba(255, 170, 50, 0.1); 
-            color: #ffaa33;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            border: 1px solid rgba(255, 170, 50, 0.3);
-            white-space: nowrap;
-            box-shadow: 0 0 15px rgba(255, 170, 50, 0.1);
+            display: inline-block; background: rgba(255, 170, 50, 0.1); color: #ffaa33; padding: 5px 12px;
+            border-radius: 8px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+            border: 1px solid rgba(255, 170, 50, 0.3); white-space: nowrap; box-shadow: 0 0 15px rgba(255, 170, 50, 0.1);
         }
 
-        /* --- ФИНАЛЬНЫЙ БЛОК КАЧЕСТВА --- */
+        /* ФИНАЛЬНЫЙ БЛОК */
         .quality-block {
-            margin: 50px auto; /* Заменили 0 на auto для точного центрирования */
-            padding: 45px;
-            background: linear-gradient(135deg, rgba(30, 30, 40, 0.6), rgba(10, 10, 15, 0.8));
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            align-self: center; /* Дополнительная привязка по центру */
+            margin: 50px auto; padding: 45px; background: linear-gradient(135deg, rgba(30, 30, 40, 0.6), rgba(10, 10, 15, 0.8));
+            border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; width: 100%;
+            box-sizing: border-box; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
+        .quality-block h3 { margin: 0 0 15px 0; color: #ffffff; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .quality-block p { margin: 0; color: #999999; font-weight: 300; line-height: 1.7; font-size: 1.05rem; }
 
-        .quality-block h3 {
-            margin: 0 0 15px 0;
-            color: #ffffff;
-            font-size: 1.4rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .quality-block p {
-            margin: 0;
-            color: #999999;
-            font-weight: 300;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
-        /* --- КНОПКА СВЯЗИ --- */
-        .contact-section {
-            margin-top: 50px;
-            text-align: center;
-            width: 100%;
-        }
-
+        /* КНОПКА СВЯЗИ */
+        .contact-section { margin-top: 50px; text-align: center; width: 100%; }
         .tg-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #ffffff, #f0f0f0);
-            color: #000000;
-            text-decoration: none;
-            padding: 22px 65px;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
-            position: relative;
-            overflow: hidden;
+            display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            color: #000000; text-decoration: none; padding: 22px 65px; border-radius: 50px; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; font-size: 0.95rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); position: relative; overflow: hidden;
         }
-
-        /* Исправленная плавная анимация блика */
         .tg-btn::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
-            transform: skewX(-25deg);
-            animation: btnShine 6s infinite;
+            content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent); transform: skewX(-25deg); animation: btnShine 6s infinite;
         }
+        @keyframes btnShine { 0% { left: -100%; } 15% { left: 200%; } 100% { left: 200%; } }
+        .tg-btn:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); background: #ffffff; }
 
-        @keyframes btnShine {
-            0% { left: -100%; }
-            15% { left: 200%; } /* Быстрый пролет блика */
-            100% { left: 200%; } /* Долгая пауза */
-        }
+        .copyright-tag { margin-top: 100px; font-size: 0.7rem; color: #555555; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 600; }
 
-        .tg-btn:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
-            background: #ffffff;
-        }
-
-        .copyright-tag {
-            margin-top: 100px;
-            font-size: 0.7rem;
-            color: #555555;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* --- МОДАЛЬНОЕ ОКНО КОНТАКТОВ --- */
+        /* МОДАЛЬНОЕ ОКНО */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s ease;
         }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal-box {
-            background: linear-gradient(135deg, rgba(20, 20, 25, 0.9), rgba(10, 10, 15, 0.95));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 40px;
-            width: 90%;
-            max-width: 420px;
-            transform: scale(0.9) translateY(20px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
-            position: relative;
+            background: linear-gradient(135deg, rgba(20, 20, 25, 0.9), rgba(10, 10, 15, 0.95)); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2); border-radius: 24px; padding: 40px; width: 90%; max-width: 420px;
+            transform: scale(0.9) translateY(20px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05); position: relative;
         }
-
-        .modal-overlay.active .modal-box {
-            transform: scale(1) translateY(0);
-        }
-
+        .modal-overlay.active .modal-box { transform: scale(1) translateY(0); }
         .modal-close {
-            position: absolute;
-            top: 20px; right: 25px;
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 2rem;
-            font-weight: 200;
-            cursor: pointer;
-            transition: color 0.3s;
-            padding: 0;
-            line-height: 1;
+            position: absolute; top: 20px; right: 25px; background: none; border: none; color: #666; font-size: 2rem;
+            font-weight: 200; cursor: pointer; transition: color 0.3s; padding: 0; line-height: 1;
         }
-
         .modal-close:hover { color: #fff; }
+        .modal-title { margin: 0 0 30px 0; font-size: 1.2rem; font-weight: 600; text-align: center; text-transform: uppercase; letter-spacing: 0.15em; color: #ffffff; }
 
-        .modal-title {
-            margin: 0 0 30px 0;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #ffffff;
-        }
-
-        .social-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
+        .social-list { display: flex; flex-direction: column; gap: 15px; }
         .social-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
+            display: flex; justify-content: space-between; align-items: center; padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px;
+            text-decoration: none; color: #fff; transition: all 0.3s ease;
         }
-
-        .social-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-3px);
-        }
-
-        /* Индивидуальное свечение при наведении */
+        .social-item:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-3px); }
         .social-item.tg:hover { border-color: rgba(50, 150, 255, 0.5); box-shadow: 0 10px 25px rgba(50, 150, 255, 0.15); }
         .social-item.tg:hover .social-platform { color: #3296ff; }
-
         .social-item.inst:hover { border-color: rgba(255, 50, 150, 0.5); box-shadow: 0 10px 25px rgba(255, 50, 150, 0.15); }
         .social-item.inst:hover .social-platform { color: #ff3296; }
-
+        .social-item.tiktok:hover { border-color: rgba(254, 44, 85, 0.5); box-shadow: 0 10px 25px rgba(254, 44, 85, 0.15); }
+        .social-item.tiktok:hover .social-platform { color: #fe2c55; }
         .social-item.snap:hover { border-color: rgba(255, 220, 50, 0.5); box-shadow: 0 10px 25px rgba(255, 220, 50, 0.15); }
         .social-item.snap:hover .social-platform { color: #ffdc32; }
         
         .social-platform { font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; color: #888; text-transform: uppercase; transition: color 0.3s; }
         .social-username { font-weight: 400; font-size: 1.05rem; letter-spacing: 0.05em; }
 
-        /* Адаптация под телефоны */
         @media (max-width: 768px) {
             .content-wrapper { padding: 60px 15px 80px 15px; }
             .bio-section { padding: 40px 25px; }
             .bio-section::after { left: 15px; font-size: 8rem; top: -10px; }
             .card { padding: 35px 25px; border-radius: 20px; }
             .tg-btn { padding: 20px 40px; width: 100%; box-sizing: border-box; }
+            .avatar { width: 120px; height: 120px; }
         }
     </style>
 </head>
@@ -483,8 +269,10 @@
 
     <main class="content-wrapper">
         
-        <!-- Хэдер -->
+        <!-- Хэдер с авой и заголовком (Анимируется при скролле, как в оригинале) -->
         <header class="reveal">
+            <!-- ОРИГИНАЛЬНОЕ НАЗВАНИЕ. На хостинге сработает файл "image.png" -->
+            <img src="image.png" alt="SOYTLIX Avatar" class="avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
             <h1>SOYTLIX</h1>
         </header>
 
@@ -499,7 +287,14 @@
         <div class="section-divider reveal"><span>Мои навыки и услуги</span></div>
 
         <section class="card card-video reveal">
-            <h2>🎬 Видеомонтаж</h2>
+            <h2>
+                <!-- Векторная иконка After Effects -->
+                <svg class="icon-custom icon-ae" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="22" fill="#00005b" stroke="#9999ff" stroke-width="6"/>
+                    <text x="50" y="68" font-family="Arial, sans-serif" font-weight="bold" font-size="48" fill="#9999ff" text-anchor="middle">Ae</text>
+                </svg>
+                Видеомонтаж
+            </h2>
             <p>Создаю динамичный, цепляющий видеоконтент, который досматривают до конца. Владею продвинутым монтажом, цветокоррекцией, саунд-дизайном и motion-графикой. Превращаю сырой материал в сочную картинку, задаю правильный ритм и настроение. Понимаю алгоритмы удержания внимания, делаю круто как для YouTube, так и для Reels / TikTok.</p>
         </section>
 
@@ -509,7 +304,11 @@
         </section>
 
         <section class="card card-nft reveal">
-            <h2>💎 Telegram NFT</h2>
+            <h2>
+                <!-- ИКОНКА PEPE -->
+                <img src="pepe.png" alt="Pepe" class="icon-custom icon-pepe" onerror="this.src='https://cryptologos.cc/logos/pepe-pepe-logo.png'">
+                Telegram NFT
+            </h2>
             <p>Занимаюсь NFT в Telegram чисто для себя. Собираю интересные коллекции, покупаю и продаю на маркетах (MRKT, Portals). Провожу прямые сделки (OTC) и не прямые без скама и лишних проблем.</p>
         </section>
 
@@ -540,17 +339,18 @@
             <button class="modal-close" id="closeModalBtn">&times;</button>
             <h3 class="modal-title">Мои контакты</h3>
             <div class="social-list">
-                <!-- Стандартная ссылка t.me (будет отлично работать на реальном хостинге) -->
                 <a href="https://t.me/soytlix" target="_blank" rel="noopener noreferrer" class="social-item tg">
                     <span class="social-platform">Telegram</span>
                     <span class="social-username">@soytlix</span>
                 </a>
-                <!-- Прямая ссылка на профиль Instagram -->
                 <a href="https://instagram.com/soyt.lix" target="_blank" rel="noopener noreferrer" class="social-item inst">
                     <span class="social-platform">Instagram</span>
                     <span class="social-username">soyt.lix</span>
                 </a>
-                <!-- Прямая ссылка на добавление в Snapchat -->
+                <a href="https://www.tiktok.com/@soytlix" target="_blank" rel="noopener noreferrer" class="social-item tiktok">
+                    <span class="social-platform">TikTok</span>
+                    <span class="social-username">@soytlix</span>
+                </a>
                 <a href="https://www.snapchat.com/add/vitney25" target="_blank" rel="noopener noreferrer" class="social-item snap">
                     <span class="social-platform">Snapchat</span>
                     <span class="social-username">vitney25</span>
@@ -571,11 +371,9 @@
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        // Небольшая задержка, если элементы появляются одновременно
                         setTimeout(() => {
                             entry.target.classList.add('active');
                         }, index * 200); 
-                        // Прекращаем следить, чтобы анимация проигрывалась один раз
                         observer.unobserve(entry.target);
                     }
                 });
@@ -593,15 +391,15 @@
 
             // Открыть модалку
             openModalBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // отменяем переход по ссылке #
+                e.preventDefault();
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Запрещаем скролл сайта на фоне
+                document.body.style.overflow = 'hidden'; 
             });
 
             // Функция закрытия
             const closeModal = () => {
                 modal.classList.remove('active');
-                document.body.style.overflow = ''; // Возвращаем скролл
+                document.body.style.overflow = ''; 
             };
 
             // Закрыть по крестику
