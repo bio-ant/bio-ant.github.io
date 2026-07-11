@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOYTLIX // BIO</title>
+    <!-- Подключаем шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Сброс стилей */
         body, html {
             margin: 0;
             padding: 0;
@@ -19,9 +21,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- АНИМИРОВАННЫЙ ФОН (Оптимизировано для Android) --- 
-           Вместо тяжелого blur(220px) используется radial-gradient. 
-           Внешне выглядит так же, но не сажает FPS на телефонах. */
+        /* АНИМИРОВАННЫЙ ФОН: Плавающие цветовые сферы */
         .orb {
             position: fixed;
             z-index: -1;
@@ -38,6 +38,7 @@
             100% { transform: translate(50px, 80px) scale(1.1); }
         }
 
+        /* Контейнер */
         .content-wrapper {
             position: relative;
             z-index: 1;
@@ -49,7 +50,7 @@
             margin: 0 auto;
         }
 
-        /* ПОЯВЛЕНИЕ БЛОКОВ (SCROLL REVEAL) */
+        /* ПОЯВЛЕНИЕ БЛОКОВ */
         .reveal {
             opacity: 0;
             transform: translateY(60px) scale(0.92);
@@ -61,6 +62,7 @@
             transform: translateY(0) scale(1);
         }
 
+        /* ХЕДЕР С АВАТАРКОЙ */
         header {
             display: flex;
             flex-direction: column;
@@ -78,6 +80,7 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
+        /* ПЕРЕЛИВАЮЩИЙСЯ ЗАГОЛОВОК SOYTLIX */
         h1 {
             font-size: clamp(3.5rem, 12vw, 7.5rem);
             font-weight: 700;
@@ -96,13 +99,14 @@
 
         @keyframes shine { to { background-position: 200% center; } }
 
+        /* ИКОНКИ ДЛЯ КАРТОЧЕК */
         .icon-custom { width: 38px; height: 38px; flex-shrink: 0; display: inline-block; }
         .icon-ae { border-radius: 8px; box-shadow: 0 0 15px rgba(153, 153, 255, 0.2); }
         .icon-pepe { object-fit: contain; filter: drop-shadow(0 5px 15px rgba(50, 255, 150, 0.3)); border-radius: 50%; }
 
-        /* --- ВЫДЕЛЕНИЯ ТЕКСТА И ИНТЕРАКТИВ С ЭЛЛИ --- */
-        .highlight-tlou { color: #8a9a5b; font-weight: 500; }
+        /* ВЫДЕЛЕНИЯ ТЕКСТА И ИНТЕРАКТИВ С ЭЛЛИ */
         .highlight-bl { color: #4dabf7; font-weight: 500; }
+        .highlight-tlou { color: #8a9a5b; font-weight: 500; }
 
         .ellie-hover-trigger {
             position: relative;
@@ -121,7 +125,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(15px) scale(0.9);
             width: 160px;
-            height: 110px;
+            height: 200px; /* УВЕЛИЧЕНА ВЫСОТА ОКНА С ЭЛЛИ */
             object-fit: cover;
             border-radius: 12px;
             opacity: 0;
@@ -137,6 +141,7 @@
             opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0) scale(1);
         }
 
+        /* РАЗДЕЛИТЕЛИ */
         .section-divider {
             width: 100%; text-align: center; margin: 90px 0 50px 0; position: relative; display: flex; align-items: center; justify-content: center;
         }
@@ -147,6 +152,7 @@
             font-weight: 500; letter-spacing: 0.3em; color: #888; text-transform: uppercase; font-size: 0.8rem; padding: 0 25px;
         }
 
+        /* БИО */
         .bio-section {
             width: 100%; margin-top: 20px; padding: 50px;
             background: linear-gradient(145deg, rgba(20, 20, 25, 0.6), rgba(10, 10, 12, 0.4));
@@ -160,6 +166,12 @@
         }
         .bio-section p { font-weight: 300; line-height: 1.8; color: #e0e0e0; font-size: 1.15rem; margin: 0; position: relative; z-index: 2; }
 
+        /* ОБЕРТКА ДЛЯ КАРТОЧЕК */
+        .cards-grid {
+            width: 100%;
+        }
+
+        /* КАРТОЧКИ УСЛУГ */
         .card {
             background: rgba(15, 15, 18, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 24px; padding: 45px; margin-bottom: 30px;
@@ -186,6 +198,7 @@
             border: 1px solid rgba(255, 170, 50, 0.3); white-space: nowrap; box-shadow: 0 0 15px rgba(255, 170, 50, 0.1);
         }
 
+        /* ФИНАЛЬНЫЙ БЛОК */
         .quality-block {
             margin: 50px auto; padding: 45px; background: linear-gradient(135deg, rgba(30, 30, 40, 0.6), rgba(10, 10, 15, 0.8));
             border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; width: 100%;
@@ -194,8 +207,8 @@
         .quality-block h3 { margin: 0 0 15px 0; color: #ffffff; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
         .quality-block p { margin: 0; color: #999999; font-weight: 300; line-height: 1.7; font-size: 1.05rem; }
 
+        /* КНОПКА СВЯЗИ */
         .contact-section { margin-top: 50px; text-align: center; width: 100%; }
-        
         .tg-btn {
             display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ffffff, #f0f0f0);
             color: #000000; text-decoration: none; padding: 22px 65px; border-radius: 50px; font-weight: 700; letter-spacing: 0.15em;
@@ -209,8 +222,9 @@
         @keyframes btnShine { 0% { left: -100%; } 15% { left: 200%; } 100% { left: 200%; } }
         .tg-btn:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); background: #ffffff; }
 
+        /* ПАСХАЛКА В ФУТЕРЕ */
         .footer-ellie {
-            width: 40px; opacity: 0.3; margin-top: 70px; margin-bottom: 10px; transition: all 0.4s ease;
+            width: 65px; opacity: 0.35; margin-top: 70px; margin-bottom: 10px; transition: all 0.4s ease;
             filter: grayscale(100%) brightness(1.5); display: inline-block;
         }
         .footer-ellie:hover {
@@ -219,6 +233,7 @@
 
         .copyright-tag { margin-top: 10px; font-size: 0.7rem; color: #555555; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 600; }
 
+        /* МОДАЛЬНОЕ ОКНО */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1000;
@@ -258,6 +273,30 @@
         .social-platform { font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; color: #888; text-transform: uppercase; transition: color 0.3s; }
         .social-username { font-weight: 400; font-size: 1.05rem; letter-spacing: 0.05em; }
 
+        /* ==========================================
+           АДАПТАЦИЯ ИСКЛЮЧИТЕЛЬНО ДЛЯ ПК
+           ========================================== */
+        @media (min-width: 769px) {
+            .cards-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .cards-grid .card {
+                margin-bottom: 0;
+                display: flex;
+                flex-direction: column;
+            }
+            .bio-section p { font-size: 1.25rem; line-height: 1.9; }
+            .card h2 { font-size: 1.6rem; }
+            .card p { font-size: 1.15rem; line-height: 1.8; }
+            .quality-block h3 { font-size: 1.6rem; }
+            .quality-block p { font-size: 1.15rem; }
+        }
+
+        /* ==========================================
+           МОБИЛЬНАЯ ВЕРСИЯ
+           ========================================== */
         @media (max-width: 768px) {
             .content-wrapper { padding: 60px 15px 80px 15px; }
             .bio-section { padding: 40px 25px; }
@@ -266,7 +305,6 @@
             .tg-btn { padding: 20px 40px; width: 100%; box-sizing: border-box; }
             .avatar { width: 120px; height: 120px; }
             
-            /* Снижаем нагрузку размытия (backdrop-filter) на мобильных для плавности */
             .bio-section, .card, .modal-box {
                 backdrop-filter: blur(8px);
                 -webkit-backdrop-filter: blur(8px);
@@ -297,34 +335,37 @@
 
         <div class="section-divider reveal"><span>Мои навыки и услуги</span></div>
 
-        <section class="card card-video reveal">
-            <h2>
-                <svg class="icon-custom icon-ae" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100" height="100" rx="22" fill="#00005b" stroke="#9999ff" stroke-width="6"/>
-                    <text x="50" y="68" font-family="Arial, sans-serif" font-weight="bold" font-size="48" fill="#9999ff" text-anchor="middle">Ae</text>
-                </svg>
-                Видеомонтаж
-            </h2>
-            <p>Создаю динамичный, цепляющий видеоконтент, который досматривают до конца. Владею продвинутым монтажом, цветокоррекцией, саунд-дизайном и motion-графикой. Превращаю сырой материал в сочную картинку, задаю правильный ритм и настроение. Понимаю алгоритмы удержания внимания, делаю круто как для YouTube, так и для Reels / TikTok.</p>
-        </section>
+        <!-- Обертка для сетки на ПК -->
+        <div class="cards-grid">
+            <section class="card card-video reveal">
+                <h2>
+                    <svg class="icon-custom icon-ae" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" rx="22" fill="#00005b" stroke="#9999ff" stroke-width="6"/>
+                        <text x="50" y="68" font-family="Arial, sans-serif" font-weight="bold" font-size="48" fill="#9999ff" text-anchor="middle">Ae</text>
+                    </svg>
+                    Видеомонтаж
+                </h2>
+                <p>Создаю динамичный, цепляющий видеоконтент, который досматривают до конца. Владею продвинутым монтажом, цветокоррекцией, саунд-дизайном и motion-графикой. Превращаю сырой материал в сочную картинку, задаю правильный ритм и настроение. Понимаю алгоритмы удержания внимания, делаю круто как для YouTube, так и для Reels / TikTok.</p>
+            </section>
 
-        <section class="card card-server reveal">
-            <h2>🖥️ Настройка серверов (VPS)</h2>
-            <p>Беру на себя всю техническую рутину и архитектуру. Полная настройка и администрирование Linux-серверов с нуля. Оптимизация производительности, настройка баз данных, обеспечение жесткой безопасности, защита от DDoS, поднятие личных VPN и автоматизация бэкапов. Ваш проект будет работать быстро и без сбоев.</p>
-        </section>
+            <section class="card card-server reveal">
+                <h2>🖥️ Настройка серверов (VPS)</h2>
+                <p>Беру на себя всю техническую рутину и архитектуру. Полная настройка и администрирование Linux-серверов с нуля. Оптимизация производительности, настройка баз данных, обеспечение жесткой безопасности, защита от DDoS, поднятие личных VPN и автоматизация бэкапов. Ваш проект будет работать быстро и без сбоев.</p>
+            </section>
 
-        <section class="card card-nft reveal">
-            <h2>
-                <img src="IMG_4610.jpeg" alt="Pepe" class="icon-custom icon-pepe" onerror="this.src='https://cryptologos.cc/logos/pepe-pepe-logo.png'">
-                Telegram NFT
-            </h2>
-            <p>Занимаюсь NFT в Telegram чисто для себя. Собираю интересные коллекции, покупаю и продаю на маркетах (MRKT, Portals). Провожу прямые сделки (OTC) и не прямые без скама и лишних проблем.</p>
-        </section>
+            <section class="card card-nft reveal">
+                <h2>
+                    <img src="IMG_4610.jpeg" alt="Pepe" class="icon-custom icon-pepe" onerror="this.src='https://cryptologos.cc/logos/pepe-pepe-logo.png'">
+                    Telegram NFT
+                </h2>
+                <p>Занимаюсь NFT в Telegram чисто для себя. Собираю интересные коллекции, покупаю и продаю на маркетах (MRKT, Portals). Провожу прямые сделки (OTC) и не прямые без скама и лишних проблем.</p>
+            </section>
 
-        <section class="card card-crypto reveal">
-            <h2>🔄 P2P / Крипта <span class="badge">ПО ЗАПРОСУ</span></h2>
-            <p>Занимаюсь покупкой и продажей криптовалюты (USDT/TON). Помогаю с обменом, вводом и выводом средств. Берусь за это не на постоянке, но по запросу или для своих — всегда готов помочь провести сделку быстро и по хорошему курсу.</p>
-        </section>
+            <section class="card card-crypto reveal">
+                <h2>🔄 P2P / Крипта <span class="badge">ПО ЗАПРОСУ</span></h2>
+                <p>Занимаюсь покупкой и продажей криптовалюты (USDT/TON). Помогаю с обменом, вводом и выводом средств. Берусь за это не на постоянке, но по запросу или для своих — всегда готов помочь провести сделку быстро и по хорошему курсу.</p>
+            </section>
+        </div>
 
         <div class="quality-block reveal">
             <h3>Бескомпромиссное качество</h3>
@@ -381,7 +422,7 @@
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.classList.add('active');
-                        }, index * 200); 
+                        }, index * 150);
                         observer.unobserve(entry.target);
                     }
                 });
