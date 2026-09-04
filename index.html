@@ -21,7 +21,7 @@
             scroll-behavior: smooth;
         }
 
-        /* АНИМИРОВАННЫЙ ФОН: Плавающие цветовые spheres */
+        /* АНИМИРОВАННЫЙ ФОН: Плавающие цветовые сферы */
         .orb {
             position: fixed;
             z-index: -1;
@@ -125,7 +125,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(15px) scale(0.9);
             width: 160px;
-            height: 200px;
+            height: 200px; /* УВЕЛИЧЕНА ВЫСОТА ОКНА С ЭЛЛИ */
             object-fit: cover;
             border-radius: 12px;
             opacity: 0;
@@ -139,55 +139,6 @@
 
         .ellie-hover-trigger:hover .ellie-popup-img {
             opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0) scale(1);
-        }
-
-        /* RGB БЛОК MEMORYBASE */
-        .rgb-wrapper {
-            width: 100%;
-            margin-top: 40px;
-            position: relative;
-            border-radius: 30px;
-            padding: 2px;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-        .rgb-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0000ff, #8000ff, #ff0000);
-            animation: spin-rgb 4s linear infinite;
-            z-index: -1;
-        }
-        @keyframes spin-rgb {
-            100% { transform: rotate(360deg); }
-        }
-        .rgb-inner {
-            background: linear-gradient(145deg, rgba(20, 20, 25, 0.95), rgba(10, 10, 12, 0.98));
-            border-radius: 28px;
-            padding: 25px 40px;
-            text-align: center;
-            font-size: 1.15rem;
-            font-weight: 300;
-            color: #e0e0e0;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1;
-        }
-        .mb-trigger {
-            color: #ffffff;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: underline;
-            text-decoration-style: dotted;
-            text-underline-offset: 4px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .mb-trigger:hover {
-            color: #b0b0b0;
-            transform: scale(1.03);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         /* РАЗДЕЛИТЕЛИ */
@@ -282,7 +233,7 @@
 
         .copyright-tag { margin-top: 10px; font-size: 0.7rem; color: #555555; letter-spacing: 0.4em; text-transform: uppercase; font-weight: 600; }
 
-        /* МОДАЛЬНЫЕ ОКНА */
+        /* МОДАЛЬНОЕ ОКНО */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1000;
@@ -322,29 +273,25 @@
         .social-platform { font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; color: #888; text-transform: uppercase; transition: color 0.3s; }
         .social-username { font-weight: 400; font-size: 1.05rem; letter-spacing: 0.05em; }
 
-        /* КНОПКИ ПОДТВЕРЖДЕНИЯ ДЛЯ MEMORYBASE */
-        .confirm-actions { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
-        .confirm-btn {
-            width: 65px; height: 65px; border-radius: 20px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); background: rgba(255,255,255,0.03);
-        }
-        .confirm-yes { border: 1px solid rgba(50, 255, 150, 0.4); color: #32ff96; }
-        .confirm-yes:hover { background: rgba(50, 255, 150, 0.1); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(50, 255, 150, 0.2); }
-        .confirm-no { border: 1px solid rgba(255, 50, 50, 0.4); color: #ff3232; }
-        .confirm-no:hover { background: rgba(255, 50, 50, 0.1); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255, 50, 50, 0.2); }
-
         /* ==========================================
            АДАПТАЦИЯ ИСКЛЮЧИТЕЛЬНО ДЛЯ ПК
            ========================================== */
         @media (min-width: 769px) {
-            .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-            .cards-grid .card { margin-bottom: 0; display: flex; flex-direction: column; }
+            .cards-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .cards-grid .card {
+                margin-bottom: 0;
+                display: flex;
+                flex-direction: column;
+            }
             .bio-section p { font-size: 1.25rem; line-height: 1.9; }
             .card h2 { font-size: 1.6rem; }
             .card p { font-size: 1.15rem; line-height: 1.8; }
             .quality-block h3 { font-size: 1.6rem; }
             .quality-block p { font-size: 1.15rem; }
-            .rgb-inner { font-size: 1.25rem; }
         }
 
         /* ==========================================
@@ -357,9 +304,8 @@
             .card { padding: 35px 25px; border-radius: 20px; }
             .tg-btn { padding: 20px 40px; width: 100%; box-sizing: border-box; }
             .avatar { width: 120px; height: 120px; }
-            .rgb-inner { padding: 20px 25px; font-size: 1.05rem; }
             
-            .bio-section, .card, .modal-box, .rgb-inner {
+            .bio-section, .card, .modal-box {
                 backdrop-filter: blur(8px);
                 -webkit-backdrop-filter: blur(8px);
             }
@@ -380,13 +326,6 @@
             <img src="IMG_2794.jpeg" alt="SOYTLIX Avatar" class="avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
             <h1>SOYTLIX</h1>
         </header>
-
-        <!-- БЛОК MEMORYBASE (ПЕРЕНЕСЕН ВЫШЕ "ОБО МНЕ") -->
-        <div class="rgb-wrapper reveal">
-            <div class="rgb-inner">
-                Являюсь частью проекта <span class="mb-trigger" id="mbLink">MemoryBase</span>
-            </div>
-        </div>
 
         <div class="section-divider reveal"><span>Обо мне</span></div>
         
@@ -445,7 +384,6 @@
         </div>
     </main>
 
-    <!-- МОДАЛЬНОЕ ОКНО КОНТАКТОВ -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal-box">
             <button class="modal-close" id="closeModalBtn">&times;</button>
@@ -471,21 +409,8 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ПОДТВЕРЖДЕНИЯ MEMORYBASE -->
-    <div class="modal-overlay" id="mbConfirmModal">
-        <div class="modal-box" style="max-width: 380px;">
-            <h3 class="modal-title" style="margin-bottom: 15px; letter-spacing: 0.1em;">Открыть ссылку?</h3>
-            <p style="text-align: center; color: #999; margin: 0; font-size: 0.95rem; line-height: 1.5;">Вы будете перенаправлены в Telegram-канал проекта MemoryBase.</p>
-            <div class="confirm-actions">
-                <button class="confirm-btn confirm-yes" id="mbYesBtn" aria-label="Открыть ссылку">✓</button>
-                <button class="confirm-btn confirm-no" id="mbNoBtn" aria-label="Отмена">✕</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ
             const observerOptions = {
                 root: null, 
                 rootMargin: '0px',
@@ -505,61 +430,33 @@
 
             const revealElements = document.querySelectorAll('.reveal');
             revealElements.forEach(el => observer.observe(el));
+        });
 
-            // ЛОГИКА МОДАЛЬНОГО ОКНА КОНТАКТОВ
-            const contactModal = document.getElementById('contactModal');
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('contactModal');
             const openModalBtn = document.getElementById('openModalBtn');
             const closeModalBtn = document.getElementById('closeModalBtn');
 
             openModalBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                contactModal.classList.add('active');
+                modal.classList.add('active');
                 document.body.style.overflow = 'hidden'; 
             });
 
-            const closeContactModal = () => {
-                contactModal.classList.remove('active');
+            const closeModal = () => {
+                modal.classList.remove('active');
                 document.body.style.overflow = ''; 
             };
 
-            closeModalBtn.addEventListener('click', closeContactModal);
-            contactModal.addEventListener('click', (e) => {
-                if (e.target === contactModal) closeContactModal();
-            });
-
-            // ЛОГИКА МОДАЛЬНОГО ОКНА MEMORYBASE
-            const mbLink = document.getElementById('mbLink');
-            const mbConfirmModal = document.getElementById('mbConfirmModal');
-            const mbYesBtn = document.getElementById('mbYesBtn');
-            const mbNoBtn = document.getElementById('mbNoBtn');
-
-            mbLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                mbConfirmModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-
-            const closeMbModal = () => {
-                mbConfirmModal.classList.remove('active');
-                document.body.style.overflow = '';
-            };
-
-            mbNoBtn.addEventListener('click', closeMbModal);
+            closeModalBtn.addEventListener('click', closeModal);
             
-            mbYesBtn.addEventListener('click', () => {
-                window.open('https://t.me/memorybasechat', '_blank', 'noopener,noreferrer');
-                closeMbModal();
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
             });
 
-            mbConfirmModal.addEventListener('click', (e) => {
-                if (e.target === mbConfirmModal) closeMbModal();
-            });
-
-            // ЗАКРЫТИЕ ВСЕХ ОКОН ПО ESC
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    if (contactModal.classList.contains('active')) closeContactModal();
-                    if (mbConfirmModal.classList.contains('active')) closeMbModal();
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
                 }
             });
         });
