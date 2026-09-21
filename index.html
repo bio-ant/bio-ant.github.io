@@ -218,7 +218,7 @@
             display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ffffff, #f0f0f0);
             color: #000000; text-decoration: none; padding: 22px 65px; border-radius: 50px; font-weight: 700; letter-spacing: 0.15em;
             text-transform: uppercase; font-size: 0.95rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); position: relative; overflow: hidden; cursor: pointer;
         }
         .tg-btn::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
@@ -278,6 +278,37 @@
         .social-platform { font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; color: #888; text-transform: uppercase; transition: color 0.3s; }
         .social-username { font-weight: 400; font-size: 1.05rem; letter-spacing: 0.05em; }
 
+        /* КНОПКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА */
+        .lang-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001; /* Поверх всех элементов */
+            background: rgba(20, 20, 25, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
         /* ==========================================
            АДАПТАЦИЯ ИСКЛЮЧИТЕЛЬНО ДЛЯ ПК
            ========================================== */
@@ -320,10 +351,21 @@
             }
             .bio-section { background: linear-gradient(145deg, rgba(20, 20, 25, 0.8), rgba(10, 10, 12, 0.7)); }
             .card { background: rgba(15, 15, 18, 0.8); }
+
+            /* Немного сдвигаем кнопку на мобильных чтобы не прилипала к краям */
+            .lang-toggle-btn {
+                top: 15px;
+                right: 15px;
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА -->
+    <button class="lang-toggle-btn" id="langToggleBtn">EN</button>
 
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -332,26 +374,24 @@
     <main class="content-wrapper">
         
         <header class="reveal">
-            <!-- Заменена аватарка на IMG_4126.jpeg -->
             <img src="IMG_4126.jpeg" alt="SOYTLIX Avatar" class="avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
             <h1>SOYTLIX</h1>
         </header>
 
-        <div class="section-divider reveal"><span>Обо мне</span></div>
+        <div class="section-divider reveal"><span data-i18n="about_title">Обо мне</span></div>
         
         <section class="bio-section reveal">
-            <p>Привет! Я сойтликс. Пытался заниматься телеграм каналами, но сейчас бросил, так как всё прогорело. Сейчас занимаюсь другими нишами, такими как NFT Gifts, VPN сервера, видеомонтаж и др. Вне работы слежу за <span class="highlight-bl">Blue Lock</span> и периодически перепрохожу <span class="highlight-tlou">The Last of Us</span> (проходил уже много раз, в подтверждение - <span class="ellie-hover-trigger">Элли<img src="IMG_5014.JPG" alt="Ellie" class="ellie-popup-img" onerror="this.src='https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&w=300&q=80'"></span> на аватарке :)). Не против новых знакомств или сотрудничества. Пишите, если есть дело или просто настроение. СММ не занимаюсь, с такими предложениями не ко мне. Ниже - мои навыки и услуги.</p>
+            <p data-i18n="bio_html">Привет! Я сойтликс. Пытался заниматься телеграм каналами, но сейчас бросил, так как всё прогорело. Сейчас занимаюсь другими нишами, такими как NFT Gifts, VPN сервера, видеомонтаж и др. Вне работы слежу за <span class="highlight-bl">Blue Lock</span> и периодически перепрохожу <span class="highlight-tlou">The Last of Us</span> (проходил уже много раз, в подтверждение - <span class="ellie-hover-trigger">Элли<img src="IMG_5014.JPG" alt="Ellie" class="ellie-popup-img" onerror="this.src='https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&w=300&q=80'"></span> на аватарке :)). Не против новых знакомств или сотрудничества. Пишите, если есть дело или просто настроение. СММ не занимаюсь, с такими предложениями не ко мне. Ниже - мои навыки и услуги.</p>
         </section>
 
-        <div class="section-divider reveal"><span>Мои навыки и услуги</span></div>
+        <div class="section-divider reveal"><span data-i18n="skills_title">Мои навыки и услуги</span></div>
 
         <!-- Обертка для сетки на ПК -->
         <div class="cards-grid">
             
-            <!-- НОВАЯ УСЛУГА: Разработка сайтов -->
             <section class="card card-web reveal">
-                <h2>🌐 Разработка сайтов</h2>
-                <p>Делаю сайты любого характера и сложности. От стильных лендингов и портфолио до многостраничных сервисов. Современный дизайн, адаптивная верстка под все устройства, продуманная структура и внимание к каждой детали. Реализую ваши идеи в вебе качественно и функционально.</p>
+                <h2 data-i18n="web_title">🌐 Разработка сайтов</h2>
+                <p data-i18n="web_desc">Делаю сайты любого характера и сложности. От стильных лендингов и портфолио до многостраничных сервисов. Современный дизайн, адаптивная верстка под все устройства, продуманная структура и внимание к каждой детали. Реализую ваши идеи в вебе качественно и функционально.</p>
             </section>
 
             <section class="card card-video reveal">
@@ -360,37 +400,40 @@
                         <rect width="100" height="100" rx="22" fill="#00005b" stroke="#9999ff" stroke-width="6"/>
                         <text x="50" y="68" font-family="Arial, sans-serif" font-weight="bold" font-size="48" fill="#9999ff" text-anchor="middle">Ae</text>
                     </svg>
-                    Видеомонтаж
+                    <span data-i18n="video_title"> Видеомонтаж</span>
                 </h2>
-                <p>Создаю динамичный, цепляющий видеоконтент, который досматривают до конца. Владею продвинутым монтажом, цветокоррекцией, саунд-дизайном и motion-графикой. Превращаю сырой материал в сочную картинку, задаю правильный ритм и настроение. Понимаю алгоритмы удержания внимания, делаю круто как для YouTube, так и для Reels / TikTok.</p>
+                <p data-i18n="video_desc">Создаю динамичный, цепляющий видеоконтент, который досматривают до конца. Владею продвинутым монтажом, цветокоррекцией, саунд-дизайном и motion-графикой. Превращаю сырой материал в сочную картинку, задаю правильный ритм и настроение. Понимаю алгоритмы удержания внимания, делаю круто как для YouTube, так и для Reels / TikTok.</p>
             </section>
 
             <section class="card card-server reveal">
-                <h2>🖥️ Настройка серверов (VPS)</h2>
-                <p>Беру на себя всю техническую рутину и архитектуру. Полная настройка и администрирование Linux-серверов с нуля. Оптимизация производительности, настройка баз данных, обеспечение жесткой безопасности, защита от DDoS, поднятие личных VPN и автоматизация бэкапов. Ваш проект будет работать быстро и без сбоев.</p>
+                <h2 data-i18n="server_title">🖥️ Настройка серверов (VPS)</h2>
+                <p data-i18n="server_desc">Беру на себя всю техническую рутину и архитектуру. Полная настройка и администрирование Linux-серверов с нуля. Оптимизация производительности, настройка баз данных, обеспечение жесткой безопасности, защита от DDoS, поднятие личных VPN и автоматизация бэкапов. Ваш проект будет работать быстро и без сбоев.</p>
             </section>
 
             <section class="card card-nft reveal">
                 <h2>
                     <img src="IMG_4610.jpeg" alt="Pepe" class="icon-custom icon-pepe" onerror="this.src='https://cryptologos.cc/logos/pepe-pepe-logo.png'">
-                    Telegram NFT
+                    <span data-i18n="nft_title"> Telegram NFT</span>
                 </h2>
-                <p>Занимаюсь NFT в Telegram чисто для себя. Собираю интересные коллекции, покупаю и продаю на маркетах (MRKT, Portals). Провожу прямые сделки (OTC) и не прямые без скама и лишних проблем.</p>
+                <p data-i18n="nft_desc">Занимаюсь NFT в Telegram чисто для себя. Собираю интересные коллекции, покупаю и продаю на маркетах (MRKT, Portals). Провожу прямые сделки (OTC) и не прямые без скама и лишних проблем.</p>
             </section>
 
             <section class="card card-crypto reveal">
-                <h2>🔄 P2P / Крипта <span class="badge">ПО ЗАПРОСУ</span></h2>
-                <p>Занимаюсь покупкой и продажей криптовалюты (USDT/TON). Помогаю с обменом, вводом и выводом средств. Берусь за это не на постоянке, но по запросу или для своих — всегда готов помочь провести сделку быстро и по хорошему курсу.</p>
+                <h2>
+                    <span data-i18n="crypto_title">🔄 P2P / Крипта </span> 
+                    <span class="badge" data-i18n="crypto_badge">ПО ЗАПРОСУ</span>
+                </h2>
+                <p data-i18n="crypto_desc">Занимаюсь покупкой и продажей криптовалюты (USDT/TON). Помогаю с обменом, вводом и выводом средств. Берусь за это не на постоянке, но по запросу или для своих — всегда готов помочь провести сделку быстро и по хорошему курсу.</p>
             </section>
         </div>
 
         <div class="quality-block reveal">
-            <h3>Бескомпромиссное качество</h3>
-            <p>Я не делаю работу шаблонно и не пропадаю с радаров. Если я берусь за проект, он будет выполнен на очень хорошем уровне. Ваш успех — это моя личная репутация.</p>
+            <h3 data-i18n="quality_title">Бескомпромиссное качество</h3>
+            <p data-i18n="quality_desc">Я не делаю работу шаблонно и не пропадаю с радаров. Если я берусь за проект, он будет выполнен на очень хорошем уровне. Ваш успех — это моя личная репутация.</p>
         </div>
 
         <div class="contact-section reveal">
-            <a href="#" class="tg-btn" id="openModalBtn">СВЯЗАТЬСЯ</a>
+            <a href="#" class="tg-btn" id="openModalBtn" data-i18n="contact_btn">СВЯЗАТЬСЯ</a>
             
             <br>
             <img src="IMG_5011.png" alt="Ellie" class="footer-ellie" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3255/3255146.png'">
@@ -404,7 +447,7 @@
     <div class="modal-overlay" id="contactModal">
         <div class="modal-box">
             <button class="modal-close" id="closeModalBtn">&times;</button>
-            <h3 class="modal-title">Мои контакты</h3>
+            <h3 class="modal-title" data-i18n="modal_title">Мои контакты</h3>
             <div class="social-list">
                 <a href="https://t.me/soytlix" target="_blank" rel="noopener noreferrer" class="social-item tg">
                     <span class="social-platform">Telegram</span>
@@ -427,6 +470,70 @@
     </div>
 
     <script>
+        // СЛОВАРЬ ПЕРЕВОДОВ
+        const translations = {
+            ru: {
+                about_title: `Обо мне`,
+                bio_html: `Привет! Я сойтликс. Пытался заниматься телеграм каналами, но сейчас бросил, так как всё прогорело. Сейчас занимаюсь другими нишами, такими как NFT Gifts, VPN сервера, видеомонтаж и др. Вне работы слежу за <span class="highlight-bl">Blue Lock</span> и периодически перепрохожу <span class="highlight-tlou">The Last of Us</span> (проходил уже много раз, в подтверждение - <span class="ellie-hover-trigger">Элли<img src="IMG_5014.JPG" alt="Ellie" class="ellie-popup-img" onerror="this.src='https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&w=300&q=80'"></span> на аватарке :)). Не против новых знакомств или сотрудничества. Пишите, если есть дело или просто настроение. СММ не занимаюсь, с такими предложениями не ко мне. Ниже - мои навыки и услуги.`,
+                skills_title: `Мои навыки и услуги`,
+                web_title: `🌐 Разработка сайтов`,
+                web_desc: `Делаю сайты любого характера и сложности. От стильных лендингов и портфолио до многостраничных сервисов. Современный дизайн, адаптивная верстка под все устройства, продуманная структура и внимание к каждой детали. Реализую ваши идеи в вебе качественно и функционально.`,
+                video_title: ` Видеомонтаж`,
+                video_desc: `Создаю динамичный, цепляющий видеоконтент, который досматривают до конца. Владею продвинутым монтажом, цветокоррекцией, саунд-дизайном и motion-графикой. Превращаю сырой материал в сочную картинку, задаю правильный ритм и настроение. Понимаю алгоритмы удержания внимания, делаю круто как для YouTube, так и для Reels / TikTok.`,
+                server_title: `🖥️ Настройка серверов (VPS)`,
+                server_desc: `Беру на себя всю техническую рутину и архитектуру. Полная настройка и администрирование Linux-серверов с нуля. Оптимизация производительности, настройка баз данных, обеспечение жесткой безопасности, защита от DDoS, поднятие личных VPN и автоматизация бэкапов. Ваш проект будет работать быстро и без сбоев.`,
+                nft_title: ` Telegram NFT`,
+                nft_desc: `Занимаюсь NFT в Telegram чисто для себя. Собираю интересные коллекции, покупаю и продаю на маркетах (MRKT, Portals). Провожу прямые сделки (OTC) и не прямые без скама и лишних проблем.`,
+                crypto_title: `🔄 P2P / Крипта `,
+                crypto_badge: `ПО ЗАПРОСУ`,
+                crypto_desc: `Занимаюсь покупкой и продажей криптовалюты (USDT/TON). Помогаю с обменом, вводом и выводом средств. Берусь за это не на постоянке, но по запросу или для своих — всегда готов помочь провести сделку быстро и по хорошему курсу.`,
+                quality_title: `Бескомпромиссное качество`,
+                quality_desc: `Я не делаю работу шаблонно и не пропадаю с радаров. Если я берусь за проект, он будет выполнен на очень хорошем уровне. Ваш успех — это моя личная репутация.`,
+                contact_btn: `СВЯЗАТЬСЯ`,
+                modal_title: `Мои контакты`
+            },
+            en: {
+                about_title: `About Me`,
+                bio_html: `Hi! I'm Soytlix. I tried running Telegram channels, but gave it up as they burnt out. Now I'm engaged in other niches such as NFT Gifts, VPN servers, video editing, etc. Outside of work, I follow <span class="highlight-bl">Blue Lock</span> and periodically replay <span class="highlight-tlou">The Last of Us</span> (played it many times, as proof - <span class="ellie-hover-trigger">Ellie<img src="IMG_5014.JPG" alt="Ellie" class="ellie-popup-img" onerror="this.src='https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&w=300&q=80'"></span> is on my avatar :)). I am open to new acquaintances and collaborations. Hit me up if you have business or just in the mood. I don't do SMM, so please skip such offers. Below are my skills and services.`,
+                skills_title: `My Skills & Services`,
+                web_title: `🌐 Web Development`,
+                web_desc: `I create websites of any scale and complexity. From stylish landing pages and portfolios to multi-page services. Modern design, responsive layout for all devices, thoughtful structure, and attention to every detail. I will bring your ideas to life on the web with high quality and functionality.`,
+                video_title: ` Video Editing`,
+                video_desc: `I create dynamic, engaging video content that gets watched till the end. I am proficient in advanced editing, color grading, sound design, and motion graphics. I turn raw footage into a juicy picture, setting the perfect rhythm and mood. I understand attention retention algorithms, making it awesome for both YouTube and Reels / TikTok.`,
+                server_title: `🖥️ Server Setup (VPS)`,
+                server_desc: `I take care of all the technical routine and architecture. Full setup and administration of Linux servers from scratch. Performance optimization, database configuration, providing robust security, DDoS protection, setting up personal VPNs, and automating backups. Your project will run fast and flawlessly.`,
+                nft_title: ` Telegram NFT`,
+                nft_desc: `I deal with NFTs on Telegram purely for myself. I collect interesting collections, buy and sell on marketplaces (MRKT, Portals). I handle direct (OTC) and indirect deals safely, without scams or unnecessary headaches.`,
+                crypto_title: `🔄 P2P / Crypto `,
+                crypto_badge: `ON DEMAND`,
+                crypto_desc: `I buy and sell cryptocurrency (USDT/TON). I help with exchanges, deposits, and withdrawals. I don't do this full-time, but upon request or for friends — I'm always ready to help you complete a deal quickly and at a good rate.`,
+                quality_title: `Uncompromising Quality`,
+                quality_desc: `I don't do cookie-cutter work and never disappear from the radar. If I take on a project, it will be done at a very high standard. Your success is my personal reputation.`,
+                contact_btn: `CONTACT ME`,
+                modal_title: `My Contacts`
+            }
+        };
+
+        // Логика переключения языка
+        let currentLang = 'ru';
+        const langToggleBtn = document.getElementById('langToggleBtn');
+
+        langToggleBtn.addEventListener('click', () => {
+            // Переключаем язык
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            
+            // Меняем текст на кнопке (показываем язык, НА который можно переключиться)
+            langToggleBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+
+            // Находим все элементы с атрибутом data-i18n и меняем им текст
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        });
+
         // Анимация появления элементов при скролле
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
